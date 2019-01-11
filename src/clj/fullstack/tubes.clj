@@ -6,13 +6,21 @@
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
 
+(defn local-time []
+  (.format (java.time.format.DateTimeFormatter/ofPattern
+            "YYYY-MM-dd_hh.mm.ss")
+           (java.time.LocalDateTime/now)))
+
+(defn log [message]
+  (println message)
+  (spit "log__" message))
+
 (def websocket-routes
   (receiver
-   {:fullstack.client/test-event
-    (fn [tube [_ arg1 arg2]]
-      (go (println "test-event")
-          ;;do stuff
-          #_(dispatch-to tube [:fullstack.client/response "done"]))
+   {:tubes.log
+    (fn [tube [_ message]]
+      (log message)
+      (dispatch-to tube [:fullstack.events/server-response "done"])
       tube)}))
 
 (defn tube-handler []

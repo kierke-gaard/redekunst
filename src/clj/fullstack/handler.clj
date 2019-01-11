@@ -3,12 +3,16 @@
             [compojure.route :refer [resources]]
             [ring.util.response :refer [resource-response]]
             [ring.middleware.reload :refer [wrap-reload]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [fullstack.tubes :refer [tube-handler]]))
 
 (defroutes routes
   (GET "/" [] (resource-response "index.html" {:root "public"}))
+  (GET "/ws" [] (tube-handler))
   (resources "/"))
 
-(def dev-handler (-> #'routes wrap-reload))
+(def handler routes) ;; (-> #'routes (wrap-cors identity))
 
-(def handler routes)
+(def dev-handler (-> handler
+                     wrap-reload))
+

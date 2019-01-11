@@ -24,7 +24,6 @@
                                     "test/js"]
 
   :figwheel {:css-dirs ["resources/public/css"]
-             ;;:ring-handler fullstack.handler/dev-handler
              :ring-handler fullstack.handler/handler
              :server-port 3448}
 
@@ -38,8 +37,8 @@
 
     :plugins      [[lein-figwheel "0.5.16"]
                    [lein-doo "0.1.8"]]
-    :figwheel {:css-dirs ["resources/public/css"]
-               #_:ring-handler #_ffullstack.dev-handler/handler}
+    #_:figwheel #_{:css-dirs ["resources/public/css"]
+               :ring-handler fullstack.handler/dev-handler}
     :main fullstack.server
     :aot [fullstack.server]}
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}

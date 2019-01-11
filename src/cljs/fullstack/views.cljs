@@ -2,7 +2,7 @@
   (:require
    [re-frame.core :as re-frame]
    [fullstack.subs :as subs]
-   ))
+   [fullstack.tubes :as tubes]))
 
 ;; FRAME ====================================
 ;; :suche.core/search-open
@@ -30,7 +30,7 @@
      [:label.optimist__form__label.input--w12
       {:for "input-select"} "chosen Type"]]]
    [:dib.row.optimist__form__row
-    [:div.col-4
+    [:div.col-4g
      [:label.optimist__form__label.input--w12
       {:for "input-select"} "Model Type"]]
     [:div.col-8
@@ -43,8 +43,11 @@
       {:href ""
        :on-click (fn [e]
                    (.preventDefault e)
-                   #_(re-frame/dispatch [::send-to-server]))}
+                   (print "clicked")
+                   #_(re-frame/dispatch [::tubes/tubes [:tubes.log "I'm here"]])
+                   (tubes/dispatch-to-server [:tubes.log "Message to log"]))}
       "Ok"]]]])
+
 
 (defn display-frame []
   (pick-frame))
@@ -52,8 +55,8 @@
 ;; FRAMES ==========================================
 
 (def frames [{:id 0, :title "Pick Data", :content pick-frame
-              :x 50, :y 100, :w 300, :h 230}
-             {:id 1, :title "Display Data", :content display-frame
+              :x 50, :y 100, :w 350, :h 300}
+             #_{:id 1, :title "Display Data", :content display-frame
               :x 50, :y 400, :w 300, :h 230}])
 
 ;; SPA VIEW ========================================

@@ -9,3 +9,8 @@
  ::initialize-db
  (fn-traced [_ _]
    db/default-db))
+
+(re-frame/reg-event-fx
+ ::server-response
+ (fn [_ [_ response]]
+   (print response)))
