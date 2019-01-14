@@ -8,11 +8,12 @@
                  [yogthos/config "0.8"]
                  [ring "1.4.0"]
                  ;;added manually after template dependencies
+                 [org.clojure/core.async "0.3.465"]
+                 [http-kit "2.3.0"]
                  [hiccup "1.0.5"]
                  [day8.re-frame/http-fx "0.1.3"]
                  [pneumatic-tubes "0.3.0"
-                  :exclusions [com.cognitect/transit-cljs]]
-                 ]
+                  :exclusions [com.cognitect/transit-cljs]]]
 
   :plugins [[lein-cljsbuild "1.1.7"]]
 
@@ -20,13 +21,9 @@
 
   :source-paths ["src/clj" "src/cljs"]
 
-  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"
+  :clean-targets ^{:protect false} ["resources/public/js/compiled"
+                                    "target"
                                     "test/js"]
-
-  :figwheel {:css-dirs ["resources/public/css"]
-             :ring-handler fullstack.handler/handler
-             :server-port 3448}
-
 
   :profiles
   {:dev
@@ -37,10 +34,12 @@
 
     :plugins      [[lein-figwheel "0.5.16"]
                    [lein-doo "0.1.8"]]
-    #_:figwheel #_{:css-dirs ["resources/public/css"]
-               :ring-handler fullstack.handler/dev-handler}
-    :main fullstack.server
-    :aot [fullstack.server]}
+    :figwheel {:css-dirs ["resources/public/css"]
+               :ring-handler fullstack.handler/handler
+               :server-port 3448}
+
+    :main fullstack.dev-server
+    :aot [fullstack.dev-server]}
    :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
    :uberjar {:source-paths ["env/prod/clj"]
              :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]
@@ -90,4 +89,7 @@
   :aot [fullstack.server]
   
   :uberjar-name "fullstack.jar"
-  )
+
+  :prep-task ["clean"
+              ["cljsbuild" "once" "min"]
+              "compile"])

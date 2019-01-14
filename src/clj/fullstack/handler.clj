@@ -3,7 +3,7 @@
             [compojure.route :refer [resources]]
             [ring.util.response :refer [resource-response]]
             [ring.middleware.reload :refer [wrap-reload]]
-            [ring.middleware.cors :refer [wrap-cors]]
+            ;;[ring.middleware.cors :refer [wrap-cors]]
             [fullstack.tubes :refer [tube-handler]]))
 
 (defroutes routes
@@ -15,4 +15,3 @@
 
 (def dev-handler (-> handler
                      wrap-reload))
-
