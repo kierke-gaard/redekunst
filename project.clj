@@ -13,9 +13,14 @@
                  [hiccup "1.0.5"]
                  [day8.re-frame/http-fx "0.1.3"]
                  [pneumatic-tubes "0.3.0"
-                  :exclusions [com.cognitect/transit-cljs]]]
+                  :exclusions [com.cognitect/transit-cljs]]
+                 #_[cljsjs/react-select "1.2.1-1"]]
 
-  :plugins [[lein-cljsbuild "1.1.7"]]
+  :plugins [[lein-cljsbuild "1.1.7"]
+            #_[lein-npm "0.6.2"]]
+
+  ;;:npm {:dependencies []
+  ;;      :root "resources/public/js"}
 
   :min-lein-version "2.5.3"
 
@@ -73,7 +78,7 @@
      :jar true
      :compiler     {:main            fullstack.core
                     :output-to       "resources/public/js/compiled/app.js"
-                    :optimizations   :advanced
+                    :optimizations   :none
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
 
@@ -93,4 +98,5 @@
 
   :prep-task ["clean"
               ["cljsbuild" "once" "min"]
+;;              ["npm" "install"]
               "compile"])

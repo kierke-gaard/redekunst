@@ -2,7 +2,8 @@
   (:require
    [re-frame.core :as re-frame]
    [fullstack.subs :as subs]
-   [fullstack.tubes :as tubes]))
+   [fullstack.tubes :as tubes]
+   #_[cljsjs.react-select]))
 
 ;; FRAME ====================================
 ;; :suche.core/search-open
