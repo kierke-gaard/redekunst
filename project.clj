@@ -19,7 +19,7 @@
 
   :min-lein-version "2.5.3"
 
-  :source-paths ["src/clj" "src/cljs"]
+  :source-paths ["src/clj" "src/cljs" "src/cljc"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "target"
@@ -36,6 +36,7 @@
                    [lein-doo "0.1.8"]]
     :figwheel {:css-dirs ["resources/public/css"]
                :ring-handler fullstack.handler/handler
+               :reload-clj-files {:clj true :cljc true}
                :server-port 3448}
 
     :main fullstack.dev-server
@@ -53,7 +54,7 @@
   :cljsbuild
   {:builds
    [{:id           "dev"
-     :source-paths ["src/cljs"]
+     :source-paths ["src/cljs" "src/cljc"]
      :figwheel     {:on-jsload "fullstack.core/mount-root"}
      :compiler     {:main                 fullstack.core
                     :output-to            "resources/public/js/compiled/app.js"
@@ -68,7 +69,7 @@
                     }}
 
     {:id           "min"
-     :source-paths ["src/cljs"]
+     :source-paths ["src/cljs" "src/cljc"]
      :jar true
      :compiler     {:main            fullstack.core
                     :output-to       "resources/public/js/compiled/app.js"
@@ -77,7 +78,7 @@
                     :pretty-print    false}}
 
     {:id           "test"
-     :source-paths ["src/cljs" "test/cljs"]
+     :source-paths ["src/cljs" "src/cljc" "test/cljs"]
      :compiler     {:main          fullstack.runner
                     :output-to     "resources/public/js/compiled/test.js"
                     :output-dir    "resources/public/js/compiled/test/out"

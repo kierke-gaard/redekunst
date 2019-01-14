@@ -1,14 +1,14 @@
-(ns fullstack.config
-  (:require [config.core :refer [env]]))
+(ns fullstack.config)
 
 (def host
-  (or (env :fullstack-host)
-      "localhost"))
+  "localhost")
 
 (def port
-  "In dev mode figwheel provides the server with a path not specified here"
-  (or (env :fullstack-port)
-      3448))
+  "In dev mode figwheel provides the server with a path not specified here. When in dev mode it has to be the same as the figwheel server port as specified in project.clj. For prod mode it can be configured here."
+  3448)
 
 (defn url [scheme path]
   (str scheme "://" host ":" port "/" path))
+
+(def websocket-url
+  (url "ws" "ws"))

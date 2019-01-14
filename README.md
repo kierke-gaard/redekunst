@@ -51,6 +51,7 @@ Please note that [doo](https://github.com/bensu/doo) can be configured to run cl
 lein clean
 lein with-profile prod uberjar
 ```
+or just lein uberjar
 
 That should compile the clojurescript code first, and then create the standalone jar.
 

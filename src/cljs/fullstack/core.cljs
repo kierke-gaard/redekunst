@@ -3,12 +3,15 @@
    [reagent.core :as reagent]
    [re-frame.core :as re-frame]
    [fullstack.events :as events]
-   [fullstack.views :as views]
-   [fullstack.config :as config]))
+   [fullstack.views :as views]))
+
+
+(def debug?
+  ^boolean goog.DEBUG)
 
 
 (defn dev-setup []
-  (when config/debug?
+  (when debug?
     (enable-console-print!)
     (println "dev mode")))
 
