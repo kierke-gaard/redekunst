@@ -77,9 +77,14 @@ To compile clojurescript to javascript:
 lein clean
 lein cljsbuild once min
 ```
+These jobs are defined in the project.clj. So lein uberjar suffices.
 
 ### Run production build
 
 run the compiled uberjar with
 jave -cp "./*" fullstack.server &
+
+
+### ToDo
+ * Add jdbc and datomic
 

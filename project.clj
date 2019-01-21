@@ -26,6 +26,8 @@
 
   :source-paths ["src/clj" "src/cljs" "src/cljc"]
 
+  ;;:test-path ["test/clj"]
+
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "target"
                                     "test/js"]
@@ -44,9 +46,10 @@
                :reload-clj-files {:clj true :cljc true}
                :server-port 3448}
 
+    ;; :source-paths ["profile/dev/clj"]
     :main fullstack.dev-server
     :aot [fullstack.dev-server]}
-   :prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
+   ;;:prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
    :uberjar {:source-paths ["env/prod/clj"]
              :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]
              :omit-source  true
@@ -78,6 +81,8 @@
      :jar true
      :compiler     {:main            fullstack.core
                     :output-to       "resources/public/js/compiled/app.js"
+                    :output-dir      "resources/public/js/compiled/prod"
+                    :asset-path      "js/compiled/prod"
                     :optimizations   :none
                     :closure-defines {goog.DEBUG false}
                     :pretty-print    false}}
@@ -98,5 +103,5 @@
 
   :prep-task ["clean"
               ["cljsbuild" "once" "min"]
-;;              ["npm" "install"]
+;;              ["npm" "install"] ;; activate only in case of npm dependencies
               "compile"])
