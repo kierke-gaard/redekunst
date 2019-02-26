@@ -20,7 +20,7 @@
    {:tubes.log
     (fn [tube [_ message]]
       (log message)
-      (dispatch-to tube [:fullstack.events/server-response "done"])
+      (dispatch-to tube [:fullstack.events/server-response (str "Server received:" message)])
       tube)}))
 
 (defn tube-handler []

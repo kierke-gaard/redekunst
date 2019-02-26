@@ -3,6 +3,7 @@
    [re-frame.core :as re-frame]
    [fullstack.subs :as subs]
    [fullstack.tubes :as tubes]
+   [fullstack.events :as events]
    #_[cljsjs.react-select]))
 
 (defn panel [{:keys [:id :x :y :w :h :title :content]}]
@@ -24,7 +25,10 @@
     [:div.col-8
      [:div.text-input
       [:input {:type "text"
-               :value @(re-frame/subscribe [:sentence])}]]]]
+               :value @(re-frame/subscribe [:sentence])
+               :on-change #(re-frame/dispatch
+                            [::events/sentence-change
+                             (-> % .-target .-value)])}]]]]
    [:div.optimist__form__row.optimist__form__actions
     [:div.col-4
      [:a.optimist__button.optimist__button--primary  
@@ -32,7 +36,8 @@
        :on-click (fn [e]
                    (.preventDefault e)
                    (print "clicked")
-                   (tubes/dispatch-to-server [:tubes.log "Message to log"]))}
+                   (tubes/dispatch-to-server
+                    [:tubes.log @(re-frame/subscribe [:sentence])]))}
       "Detect"]]]])
 
 (defn output-frame []
@@ -41,7 +46,7 @@
     [:div.col-8
      [:div.text-input
       [:input {:type "text"
-               :value @(re-frame/subscribe [:analysis])}]]]]
+               :default-value @(re-frame/subscribe [:analysis])}]]]]
    [:div.optimist__form__row.optimist__form__actions
     [:div.col-4
      [:a.optimist__button.optimist__button--primary  
