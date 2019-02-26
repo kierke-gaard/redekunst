@@ -1,8 +1,12 @@
 (ns fullstack.subs
-  (:require
-   [re-frame.core :as re-frame]))
+  (:require [re-frame.core :as re-frame]))
+
+
+;; Queries:
+(re-frame/reg-sub
+ :sentence
+ :sentence)
 
 (re-frame/reg-sub
- ::name
- (fn [db]
-   (:name db)))
+ :analysis
+ :analysis)
