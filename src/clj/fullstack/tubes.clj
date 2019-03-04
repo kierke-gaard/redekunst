@@ -1,7 +1,8 @@
 (ns fullstack.tubes
   (:require [pneumatic-tubes.core :refer [receiver transmitter dispatch]]
             [pneumatic-tubes.httpkit :refer [websocket-handler]]
-            [clojure.core.async :refer [go]]))
+            [clojure.core.async :refer [go]]
+            [fullstack.metaphor :as metaphor]))
 
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
@@ -13,7 +14,7 @@
 
 (defn log [message]
   (println message)
-  (spit "log__" message))
+  #_(spit "log__" message))
 
 (def websocket-routes
   (receiver
@@ -21,7 +22,14 @@
     (fn [tube [_ message]]
       (log message)
       (dispatch-to tube [:fullstack.events/server-response (str "Server received:" message)])
-      tube)}))
+      tube)
+    :metaphor-analysis
+    (fn [tube [_ sentence]]
+      (log (str "metaphor-analysis of " sentence))
+      (let [analysis (metaphor/analysis _ _)]
+        (dispatch-to tube [:fullstack.events/analysis-change
+                           analysis])
+        tube))}))
 
 (defn tube-handler []
   (websocket-handler websocket-routes))

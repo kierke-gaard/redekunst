@@ -37,7 +37,8 @@
                    (.preventDefault e)
                    (print "clicked")
                    (tubes/dispatch-to-server
-                    [:tubes.log @(re-frame/subscribe [:sentence])]))}
+                    [:metaphor-analysis
+                     @(re-frame/subscribe [:sentence])]))}
       "Detect"]]]])
 
 (defn output-frame []
