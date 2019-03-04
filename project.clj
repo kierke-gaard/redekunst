@@ -14,6 +14,7 @@
                  [day8.re-frame/http-fx "0.1.3"]
                  [pneumatic-tubes "0.3.0"
                   :exclusions [com.cognitect/transit-cljs]]
+                 [cheshire "5.8.1"]
                  #_[cljsjs/react-select "1.2.1-1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
