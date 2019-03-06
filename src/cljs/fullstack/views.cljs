@@ -7,13 +7,13 @@
    #_[cljsjs.react-select]))
 
 (defn panel [{:keys [:id :x :y :w :h :title :content]}]
-  [:div.optimist__window {:id id
-                          :style {:position "absolute"
-                                  :left x
-                                  :top y
-                                  :width w
-                                  :height h
-                                  :border "1px solid black"}}
+  [:div.fullstack__window {:id id
+                           :style {:position "absolute"
+                                   :left x
+                                   :top y
+                                   :width w
+                                   :height h
+                                   :border "1px solid black"}}
    [:div.window__header
     [:div.window__title title]]
    [:div.windows__body
@@ -21,7 +21,7 @@
 
 (defn input-frame []
   [:form
-   [:div.row.optimist__form__row
+   [:div.row.fullstack__form__row
     [:div.col-8
      [:div.text-input
       [:input {:type "text"
@@ -29,9 +29,9 @@
                :on-change #(re-frame/dispatch
                             [::events/sentence-change
                              (-> % .-target .-value)])}]]]]
-   [:div.optimist__form__row.optimist__form__actions
+   [:div.fullstack__form__row.fullstack__form__actions
     [:div.col-4
-     [:a.optimist__button.optimist__button--primary  
+     [:a.fullstack__button.fullstack__button--primary  
       {:href ""
        :on-click (fn [e]
                    (.preventDefault e)
@@ -43,14 +43,14 @@
 
 (defn output-frame []
   [:form
-   [:div.row.optimist__form__row
+   [:div.row.fullstack__form__row
     [:div.col-8
      [:div.text-input
       [:input {:type "text"
                :default-value @(re-frame/subscribe [:analysis])}]]]]
-   [:div.optimist__form__row.optimist__form__actions
+   [:div.fullstack__form__row.fullstack__form__actions
     [:div.col-4
-     [:a.optimist__button.optimist__button--primary  
+     [:a.fullstack__button.fullstack__button--primary  
       {:href ""
        :on-click (fn [e]
                    (.preventDefault e)
@@ -58,7 +58,7 @@
                    (tubes/dispatch-to-server [:tubes.log "Message to log"]))}
       "That's right"]
      [:div.col-4
-      [:a.optimist__button.optimist__button--primary  
+      [:a.fullstack__button.fullstack__button--primary  
        {:href ""
         :on-click (fn [e]
                     (.preventDefault e)
@@ -73,13 +73,13 @@
 
 (defn main-panel []
   [:div
-   [:div.optimist
-    [:div.optimist__header
-     [:div.optimist__productbar
-      [:div.optimist__userbar
-       [:div.optimist__name 
+   [:div.fullstack
+    [:div.fullstack__header
+     [:div.fullstack__productbar
+      [:div.fullstack__userbar
+       [:div.fullstack__name 
         "Mercury - an innovative Figure of Speech Detection Service"]]]]]
-   [:div.optimist__workspace {:style {:height "100vh"
+   [:div.fullstack__workspace {:style {:height "100vh"
                                       :width "100vw"
                                       :overflow :auto}
                               :on-drag-over #(.preventDefault %)
