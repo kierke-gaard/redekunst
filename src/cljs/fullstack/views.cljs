@@ -22,7 +22,7 @@
 (defn input-frame []
   [:form
    [:div.row.fullstack__form__row
-    [:div.col-8
+    [:div.col-11
      [:div.text-input
       [:input {:type "text"
                :value @(re-frame/subscribe [:sentence])
@@ -44,7 +44,7 @@
 (defn output-frame []
   [:form
    [:div.row.fullstack__form__row
-    [:div.col-8
+    [:div.col-11
      [:div.text-input
       [:input {:type "text"
                :default-value @(re-frame/subscribe [:analysis])}]]]]

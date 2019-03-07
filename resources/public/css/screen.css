@@ -3924,10 +3924,14 @@ input::placeholder {
 
 /* line 45, _forms */
 input[type="text"] {
-  background-color: #e9ecef;
-  border: 0;
-  outline: 0;
-  padding: 3px 7px; }
+    background-color: #e9ecef;
+    width: 100%;
+    overflow: hidden;
+    height: auto;
+    border: 0;
+    outline: 0;
+    padding: 3px 7px;
+}
 
 /* line 53, _forms */
 .fullstack__form__input,

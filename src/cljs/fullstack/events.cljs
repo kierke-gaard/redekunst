@@ -8,7 +8,7 @@
 (re-frame/reg-event-db
  ::initialize
  (fn [_ _]
-   {:sentence "It is raining cats and dogs."
+   {:sentence "When looking outside the windows, I have to say that it is raining cats and dogs."
     :analysis "There is figure of speech."}))
 
 (re-frame/reg-event-db
