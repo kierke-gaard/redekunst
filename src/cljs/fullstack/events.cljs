@@ -9,7 +9,7 @@
  ::initialize
  (fn [_ _]
    {:sentence "When looking outside the windows, I have to say that it is raining cats and dogs."
-    :analysis "There is figure of speech."}))
+    :analysis "You'll see our analysis here."}))
 
 (re-frame/reg-event-db
  ::sentence-change

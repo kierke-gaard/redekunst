@@ -25,8 +25,10 @@
       tube)
     :metaphor-analysis
     (fn [tube [_ sentence]]
-      (log (str "metaphor-analysis of " sentence))
-      (let [analysis (metaphor/analysis _ _)]
+      (let [analysis (metaphor/analysis sentence)]
+        (log (str ":metaphor-analysis of sentence: "
+                  sentence
+                  "\n  result: " analysis))        
         (dispatch-to tube [:fullstack.events/analysis-change
                            analysis])
         tube))}))

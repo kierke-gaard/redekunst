@@ -35,7 +35,6 @@
       {:href ""
        :on-click (fn [e]
                    (.preventDefault e)
-                   (print "clicked")
                    (tubes/dispatch-to-server
                     [:metaphor-analysis
                      @(re-frame/subscribe [:sentence])]))}
@@ -47,7 +46,9 @@
     [:div.col-11
      [:div.text-input
       [:input {:type "text"
-               :default-value @(re-frame/subscribe [:analysis])}]]]]
+               :value @(re-frame/subscribe [:analysis])
+               :on-change #(re-frame/dispatch
+                            [::events/analysis-change (-> % .-target .-value)])}]]]]
    [:div.fullstack__form__row.fullstack__form__actions
     [:div.col-4
      [:a.fullstack__button.fullstack__button--primary  
