@@ -9,7 +9,7 @@ lein new re-frame fullstack +10x +handler +test
 
 ## Development Mode
 
-s### Run application:
+### Run application:
 
 ```
 lein clean
@@ -19,18 +19,14 @@ lein figwheel dev
 Figwheel will automatically push cljs changes to the browser.
 Wait a bit, then browse to [http://localhost:3448](http://localhost:3448).
 
-
-OR in a injected repl
+OR in an injected repl
 ```
-start-figwheel!
+(fullstack.dev-server/start-dev)
 ```
-or in this project execute the function ```fullstack.server/start-dev```
-
 
 ### Run tests:
 
 Install karma and headless chrome
-
 ```
 npm install -g karma-cli
 npm install karma karma-cljs-test karma-chrome-launcher --save-dev
@@ -45,31 +41,17 @@ lein doo chrome-headless test once
 
 Please note that [doo](https://github.com/bensu/doo) can be configured to run cljs.test in many JS environments (phantom, chrome, ie, safari, opera, slimer, node, rhino, or nashorn).
 
+
 ## Production Build
 
 ```
 lein clean
-lein with-profile prod uberjar
+lein uberjar
 ```
-or just lein uberjar
 
 That should compile the clojurescript code first, and then create the standalone jar.
-
 When you run the jar you can set the port the ring server will use by setting the environment variable PORT.
 If it's not set, it will run on port 3000 by default.
-
-
-To deploy to heroku, first create your app:
-
-```
-heroku create
-```
-
-Then deploy the application:
-
-```
-git push heroku master
-```
 
 To compile clojurescript to javascript:
 
@@ -79,10 +61,14 @@ lein cljsbuild once min
 ```
 These jobs are defined in the project.clj. So lein uberjar suffices.
 
+
 ### Run production build
 
-run the compiled uberjar with
-jave -cp "./*" fullstack.server &
+run the compiled uberjar with 
+```
+java -cp "./*" fullstack.server &
+```
+in the directory target
 
 
 ### ToDo

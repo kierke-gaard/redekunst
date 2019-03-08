@@ -6,7 +6,7 @@
   (:gen-class))
 
 (defn -main [& args]
-  (let [port config/port]
+  (let [port config/prod-port]
     (println "Starting http-kit server on port" port "...")
     (http/run-server handler
                      {:port port
