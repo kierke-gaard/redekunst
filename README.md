@@ -1,11 +1,12 @@
-# fullstack
+# Redekunst
 
-Template for clojure/clojurescript/re-frame application with server/client part connected via websocket. Figwheel for debugging.
+Chatbot as  clojure/clojurescript/re-frame web-application with server/client part connected via websocket. Figwheel for debugging.
 
 Tested with java 1.8 and leiningen 2.8.1, Chrome
 
-Project based on a leiningen template containing server, css, debugging and testing
+Project based on a leiningen template containing server, debugging and testing
 lein new re-frame fullstack +10x +handler +test
+
 
 ## Development Mode
 
@@ -19,15 +20,18 @@ lein figwheel dev
 Figwheel will automatically push cljs changes to the browser.
 Wait a bit, then browse to [http://localhost:3448](http://localhost:3448).
 
-OR in an injected repl
+In the repl invoke the function
 ```
 (fullstack.dev-server/start-dev)
 ```
 
+Note that you could run a repl in emacs via cider through M-x cider-jack-in or C-c M-j.
+
+
 ### Run tests:
 
 Install karma and headless chrome
-```
+```     
 npm install -g karma-cli
 npm install karma karma-cljs-test karma-chrome-launcher --save-dev
 ```

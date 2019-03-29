@@ -24,4 +24,3 @@
         (or (:reaction $)
             (throw (ex-info "No reaction in body")))
         (str $))))
-

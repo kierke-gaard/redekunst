@@ -25,12 +25,12 @@
       tube)
     :ask-chat-bot
     (fn [tube [_ sentence]]
-      (let [analysis (chat-bot/reaction sentence)]
-        (log (str ":chat-bot confronted with sentence: "
+      (let [reaction (chat-bot/reaction sentence)]
+        (log (str ":chat-bot confronted  with: "
                   sentence
-                  "\n  result: " analysis))        
+                  "\n  it's reaction: " reaction))        
         (dispatch-to tube [:fullstack.events/analysis-change
-                           analysis])
+                           reaction])
         tube))}))
 
 (defn tube-handler []
