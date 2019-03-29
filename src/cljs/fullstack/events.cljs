@@ -8,8 +8,8 @@
 (re-frame/reg-event-db
  ::initialize
  (fn [_ _]
-   {:sentence "When looking outside the windows, I have to say that it is raining cats and dogs."
-    :analysis "You'll see our analysis here."}))
+   {:sentence "Hello!"
+    :analysis "Not chatty yet :( "}))
 
 (re-frame/reg-event-db
  ::sentence-change

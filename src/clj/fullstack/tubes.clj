@@ -2,7 +2,7 @@
   (:require [pneumatic-tubes.core :refer [receiver transmitter dispatch]]
             [pneumatic-tubes.httpkit :refer [websocket-handler]]
             [clojure.core.async :refer [go]]
-            [fullstack.metaphor :as metaphor]))
+            [fullstack.chat-bot :as chat-bot]))
 
 (def tx (transmitter))
 (def dispatch-to (partial dispatch tx))
@@ -23,10 +23,10 @@
       (log message)
       (dispatch-to tube [:fullstack.events/server-response (str "Server received:" message)])
       tube)
-    :metaphor-analysis
+    :ask-chat-bot
     (fn [tube [_ sentence]]
-      (let [analysis (metaphor/analysis sentence)]
-        (log (str ":metaphor-analysis of sentence: "
+      (let [analysis (chat-bot/reaction sentence)]
+        (log (str ":chat-bot confronted with sentence: "
                   sentence
                   "\n  result: " analysis))        
         (dispatch-to tube [:fullstack.events/analysis-change

@@ -36,9 +36,9 @@
        :on-click (fn [e]
                    (.preventDefault e)
                    (tubes/dispatch-to-server
-                    [:metaphor-analysis
+                    [:ask-chat-bot
                      @(re-frame/subscribe [:sentence])]))}
-      "Detect"]]]])
+      "Send"]]]])
 
 (defn output-frame []
   [:form
@@ -48,28 +48,11 @@
       [:input {:type "text"
                :value @(re-frame/subscribe [:analysis])
                :on-change #(re-frame/dispatch
-                            [::events/analysis-change (-> % .-target .-value)])}]]]]
-   [:div.fullstack__form__row.fullstack__form__actions
-    [:div.col-4
-     [:a.fullstack__button.fullstack__button--primary  
-      {:href ""
-       :on-click (fn [e]
-                   (.preventDefault e)
-                   (print "clicked")
-                   (tubes/dispatch-to-server [:tubes.log "Message to log"]))}
-      "That's right"]
-     [:div.col-4
-      [:a.fullstack__button.fullstack__button--primary  
-       {:href ""
-        :on-click (fn [e]
-                    (.preventDefault e)
-                    (print "clicked")
-                    (tubes/dispatch-to-server [:tubes.log "Message to log"]))}
-       "Incorrect"]]]]])
+                            [::events/analysis-change (-> % .-target .-value)])}]]]]])
 
-(def frames [{:id 0, :title "Type your sentence here ...",
+(def frames [{:id 0, :title "Type your request here",
               :content input-frame :x 50, :y 100, :w 400, :h 200}
-             {:id 1, :title "... and we tell you if there is figure of speech",
+             {:id 1, :title "Reaction of the Chat Bot",
               :content output-frame :x 500, :y 100, :w 400, :h 200}])
 
 (defn main-panel []
@@ -79,7 +62,7 @@
      [:div.fullstack__productbar
       [:div.fullstack__userbar
        [:div.fullstack__name 
-        "Mercury - an innovative Figure of Speech Detection Service"]]]]]
+        "Hermes - an innovative Chat Bot"]]]]]
    [:div.fullstack__workspace {:style {:height "100vh"
                                       :width "100vw"
                                       :overflow :auto}

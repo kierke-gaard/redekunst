@@ -10,7 +10,7 @@
 (defroutes routes
   (GET "/" [] (resource-response "index.html" {:root "public"}))
   (GET "/ws" [] (tube-handler))
-  (GET "/metaphor-analysis-mocked/:sentence"
+  (GET "/mocked-service/:sentence"
        [sentence]
        (mocked-service/response sentence))
   (resources "/"))

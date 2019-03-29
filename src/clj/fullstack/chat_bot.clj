@@ -1,4 +1,4 @@
-(ns fullstack.metaphor
+(ns fullstack.chat-bot
   (:require [fullstack.config :as config]
             [org.httpkit.client :as http]
             [cheshire.core :as json]))
@@ -8,9 +8,9 @@
   (clojure.string/replace sentence #"[ ,;:.]" "%20"))
 
 
-(defn analysis
+(defn reaction
   [sentence]
-  (let [request-url (str config/metaphor-server-url
+  (let [request-url (str config/service-url
                          "/"
                          (replace-chars sentence))
         response @(http/get request-url)]
@@ -21,7 +21,7 @@
         (or (:body $)
             (throw (ex-info "No or empty body" {:response response})))
         (json/decode $ true)
-        (or (:score $)
-            (throw (ex-info "No score in body")))
-        (str "Metaphor with probability " $))))
+        (or (:reaction $)
+            (throw (ex-info "No reaction in body")))
+        (str $))))
 

@@ -1,8 +1,8 @@
 (ns fullstack.config)
 
-(def metaphor-server-url
+(def service-url
   ;; mocked service
-  "http://localhost:3448/metaphor-analysis-mocked"
+  "http://localhost:3448/mocked-service"
   ;; real service
   #_"http://localhost:8000")
 
