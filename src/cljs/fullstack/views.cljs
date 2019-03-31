@@ -35,6 +35,7 @@
       {:href ""
        :on-click (fn [e]
                    (.preventDefault e)
+                   ;; (re-frame/dispatch [:events/react-on-speech audio-seq]
                    (tubes/dispatch-to-server
                     [:ask-chat-bot
                      @(re-frame/subscribe [:sentence])]))}
