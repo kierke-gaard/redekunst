@@ -18,10 +18,10 @@
                  #_[cljsjs/react-select "1.2.1-1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
-            #_[lein-npm "0.6.2"]]
+            [lein-npm "0.6.2"]]
 
-  ;;:npm {:dependencies []
-  ;;      :root "resources/public/js"}
+  :npm {:dependencies []
+        :root "resources/public/js"}
 
   :min-lein-version "2.5.3"
 
@@ -57,7 +57,7 @@
              :main         fullstack.server
              :aot          [fullstack.server]
              :uberjar-name "fullstack.jar"
-             :prep-tasks   ["compile" ["cljsbuild" "once" "min"]]}
+             :prep-tasks   ["clean" ["cljsbuild" "once" "min"] ["npm" "install"] "compile"]}
    }
 
   :cljsbuild
@@ -104,5 +104,5 @@
 
   :prep-task ["clean"
               ["cljsbuild" "once" "min"]
-;;              ["npm" "install"] ;; activate only in case of npm dependencies
+              ["npm" "install"] ;; activate only in case of npm dependencies
               "compile"])
