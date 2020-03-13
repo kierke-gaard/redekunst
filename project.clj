@@ -1,20 +1,20 @@
 (defproject fullstack "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.238"]
-                 [reagent "0.7.0"]
-                 [re-frame "0.10.5"]
-                 [ns-tracker "0.3.1"]
-                 [compojure "1.5.0"]
-                 [yogthos/config "0.8"]
-                 [ring "1.4.0"]
+                 [org.clojure/clojurescript "1.10.597"]
+                 [reagent "0.8.1"]
+                 [re-frame "0.12.0"]
+                 ;; [ns-tracker "0.4.0"]
+                 [compojure "1.6.1"]
+                 [yogthos/config "1.1.7"]
+                 [ring "1.8.0"]
                  ;;added manually after template dependencies
-                 [org.clojure/core.async "0.3.465"]
+                 [org.clojure/core.async "1.0.567"]
                  [http-kit "2.3.0"]
                  [hiccup "1.0.5"]
-                 [day8.re-frame/http-fx "0.1.3"]
+                 [day8.re-frame/http-fx "0.1.6"]
                  [pneumatic-tubes "0.3.0"
                   :exclusions [com.cognitect/transit-cljs]]
-                 [cheshire "5.8.1"]
+                 [cheshire "5.10.0"]
                  #_[cljsjs/react-select "1.2.1-1"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
@@ -35,13 +35,13 @@
 
   :profiles
   {:dev
-   {:dependencies [[binaryage/devtools "0.9.10"]
+   {:dependencies [[binaryage/devtools "1.0.0"]
                    [day8.re-frame/re-frame-10x "0.3.3"]
                    [day8.re-frame/tracing "0.5.1"]
-                   [figwheel-sidecar "0.5.13"]]
+                   [figwheel-sidecar "0.5.19"]]
 
-    :plugins      [[lein-figwheel "0.5.16"]
-                   [lein-doo "0.1.8"]]
+    :plugins      [[lein-figwheel "0.5.19"]
+                   [lein-doo "0.1.11"]]
     :figwheel {:css-dirs ["resources/public/css"]
                :ring-handler fullstack.handler/handler
                :reload-clj-files {:clj true :cljc true}
@@ -52,7 +52,7 @@
     :aot [fullstack.dev-server]}
    ;;:prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
    :uberjar {:source-paths ["env/prod/clj"]
-             :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]
+             :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]
              :omit-source  true
              :main         fullstack.server
              :aot          [fullstack.server]
