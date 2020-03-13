@@ -1,7 +1,7 @@
 (defproject fullstack "0.1.0-SNAPSHOT"
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.597"]
-                 [reagent "0.8.1"]
+                 [reagent "0.10.0"]
                  [re-frame "0.12.0"]
                  [compojure "1.6.1"]
                  [yogthos/config "1.1.7"]
@@ -31,7 +31,7 @@
   :profiles
   {:dev
    {:dependencies [[binaryage/devtools "1.0.0"]
-                   [day8.re-frame/re-frame-10x "0.3.3"]
+                   [day8.re-frame/re-frame-10x "0.6.0"]
                    [day8.re-frame/tracing "0.5.1"]
                    [figwheel-sidecar "0.5.19"]]
 
