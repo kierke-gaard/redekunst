@@ -3,19 +3,16 @@
                  [org.clojure/clojurescript "1.10.597"]
                  [reagent "0.8.1"]
                  [re-frame "0.12.0"]
-                 ;; [ns-tracker "0.4.0"]
                  [compojure "1.6.1"]
                  [yogthos/config "1.1.7"]
                  [ring "1.8.0"]
-                 ;;added manually after template dependencies
                  [org.clojure/core.async "1.0.567"]
                  [http-kit "2.3.0"]
                  [hiccup "1.0.5"]
                  [day8.re-frame/http-fx "0.1.6"]
                  [pneumatic-tubes "0.3.0"
                   :exclusions [com.cognitect/transit-cljs]]
-                 [cheshire "5.10.0"]
-                 #_[cljsjs/react-select "1.2.1-1"]]
+                 [cheshire "5.10.0"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-npm "0.6.2"]]
@@ -26,8 +23,6 @@
   :min-lein-version "2.5.3"
 
   :source-paths ["src/clj" "src/cljs" "src/cljc"]
-
-  ;;:test-path ["test/clj"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled"
                                     "target"
@@ -47,10 +42,10 @@
                :reload-clj-files {:clj true :cljc true}
                :server-port 3448}
 
-    ;; :source-paths ["profile/dev/clj"]
     :main fullstack.dev-server
-    :aot [fullstack.dev-server]}
-   ;;:prod { :dependencies [[day8.re-frame/tracing-stubs "0.5.1"]]}
+    :aot [fullstack.dev-server]
+    }
+
    :uberjar {:source-paths ["env/prod/clj"]
              :dependencies [[day8.re-frame/tracing-stubs "0.5.3"]]
              :omit-source  true
@@ -70,11 +65,9 @@
                     :output-dir           "resources/public/js/compiled/out"
                     :asset-path           "js/compiled/out"
                     :source-map-timestamp true
-                    :preloads             [devtools.preload
-                                           day8.re-frame-10x.preload]
+                    :preloads             [day8.re-frame-10x.preload]
                     :closure-defines      {"re_frame.trace.trace_enabled_QMARK_" true
                                            "day8.re_frame.tracing.trace_enabled_QMARK_" true}
-                    :external-config      {:devtools/config {:features-to-install :all}}
                     }}
 
     {:id           "min"
