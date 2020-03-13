@@ -1,5 +1,5 @@
 (defproject fullstack "0.1.0-SNAPSHOT"
-  :dependencies [[org.clojure/clojure "1.8.0"]
+  :dependencies [[org.clojure/clojure "1.10.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [reagent "0.7.0"]
                  [re-frame "0.10.5"]
@@ -64,7 +64,7 @@
   {:builds
    [{:id           "dev"
      :source-paths ["src/cljs" "src/cljc"]
-     :figwheel     {:on-jsload "fullstack.core/mount-root"}
+     :figwheel     {:on-jsload "fullstack.core/init"}
      :compiler     {:main                 fullstack.core
                     :output-to            "resources/public/js/compiled/app.js"
                     :output-dir           "resources/public/js/compiled/out"
@@ -99,7 +99,7 @@
   :main fullstack.server
 
   :aot [fullstack.server]
-  
+
   :uberjar-name "fullstack.jar"
 
   :prep-task ["clean"
