@@ -24,3 +24,5 @@
   (re-frame/dispatch-sync [::events/initialize])
   (dev-setup)
   (mount-root))
+
+(init) ;; should be called automatically via project.clj

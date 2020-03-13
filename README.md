@@ -31,7 +31,7 @@ Note that you could run a repl in emacs via cider through M-x cider-jack-in or C
 ### Run tests:
 
 Install karma and headless chrome
-```     
+```
 npm install -g karma-cli
 npm install karma karma-cljs-test karma-chrome-launcher --save-dev
 ```
@@ -55,7 +55,7 @@ lein uberjar
 
 That should compile the clojurescript code first, and then create the standalone jar.
 When you run the jar you can set the port the ring server will use by setting the environment variable PORT.
-If it's not set, it will run on port 3000 by default.
+If it's not set, it will run on port 3448 by default.
 
 To compile clojurescript to javascript:
 
@@ -68,7 +68,7 @@ These jobs are defined in the project.clj. So lein uberjar suffices.
 
 ### Run production build
 
-run the compiled uberjar with 
+run the compiled uberjar with
 ```
 java -cp "./*" fullstack.server &
 ```
@@ -77,4 +77,3 @@ in the directory target
 
 ### ToDo
  * Add jdbc and datomic
-
