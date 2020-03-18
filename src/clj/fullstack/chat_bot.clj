@@ -10,7 +10,7 @@
 
 (defn reaction
   [sentence]
-  (let [request-url (str config/service-url
+  (let [request-url (str (config/service-url)
                          "/"
                          (replace-chars sentence))
         response @(http/get request-url)]

@@ -54,7 +54,6 @@ lein uberjar
 ```
 
 That should compile the clojurescript code first, and then create the standalone jar.
-When you run the jar you can set the port the ring server will use by setting the environment variable PORT.
 If it's not set, it will run on port 3448 by default.
 
 To compile clojurescript to javascript:
@@ -72,8 +71,12 @@ run the compiled uberjar with
 ```
 java -cp "./*" fullstack.server &
 ```
-in the directory target
+in the directory target. Or
+```
+java -tar fullstack.jar fullstack.server &
+```
 
+Then browse to http://localhost:port where port is defined as prod-port in config
 
 ### ToDo
  * Add jdbc and datomic

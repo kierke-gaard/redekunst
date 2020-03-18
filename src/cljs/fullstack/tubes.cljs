@@ -8,15 +8,10 @@
   #_(.log js/console "received from server:" (str event))
   (re-frame/dispatch event))
 
-;; better retrieve from config or env
-(def websocket-url
-  #_"ws://localhost:3448/ws"
-  config/websocket-url)
-
-(print "websocket-url" config/websocket-url)
+(print "websocket-url" (config/websocket-url))
 
 (def tube (tubes/tube
-           websocket-url
+           (config/websocket-url)
            on-receive))
 
 

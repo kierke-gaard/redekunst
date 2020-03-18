@@ -3,12 +3,16 @@
 (def host
   "localhost")
 
+(defn url [scheme path port]
+  (str scheme "://" host ":" port "/" path))
+
+
 (def port
   "In dev mode figwheel provides the server with a path not specified here. When in dev mode it has to be the same as the figwheel server port as specified in project.clj. For prod mode it can be configured here."
   3448)
 
-(defn url [scheme path]
-  (str scheme "://" host ":" port "/" path))
+(defn websocket-url []
+  (url "ws" "ws" port))
 
-(def websocket-url
-  (url "ws" "ws"))
+(defn service-url []
+  (str "http://localhost:" port "/mocked-service"))
