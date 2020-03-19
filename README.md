@@ -78,5 +78,16 @@ java -tar fullstack.jar fullstack.server &
 
 Then browse to http://localhost:port where port is defined as prod-port in config
 
-### ToDo
- * Add jdbc and datomic
+
+### Docker
+
+#### Build Image
+shell execute in root dir
+```
+docker build -t image_name .
+```
+
+#### Run Container
+```
+docker run -p 80:80 --name container_name image_name
+```
