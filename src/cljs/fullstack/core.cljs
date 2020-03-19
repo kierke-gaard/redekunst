@@ -17,12 +17,12 @@
 
 (defn mount-root []
   (re-frame/clear-subscription-cache!)
+  (re-frame/dispatch-sync [::events/initialize])
   (reagent/render [views/main-panel]
                   (.getElementById js/document "app")))
 
 (defn ^:export init []
-  (re-frame/dispatch-sync [::events/initialize])
   (dev-setup)
   (mount-root))
 
-(init) ;; should be called automatically via project.clj
+(mount-root)
