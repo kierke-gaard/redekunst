@@ -2,7 +2,7 @@
 
 Chatbot as  clojure/clojurescript/re-frame web-application with server/client part connected via websocket. Figwheel for debugging.
 
-Tested with java 1.8 and leiningen 2.8.1, Chrome
+Tested with java 14 and leiningen 2.8.1, Chrome
 
 Project based on a leiningen template containing server, debugging and testing
 lein new re-frame fullstack +10x +handler +test
@@ -54,7 +54,7 @@ lein uberjar
 ```
 
 That should compile the clojurescript code first, and then create the standalone jar.
-If it's not set, it will run on port 3448 by default.
+If it's not set, it will run on port 80 by default.
 
 To compile clojurescript to javascript:
 
@@ -90,4 +90,9 @@ docker build -t image_name .
 #### Run Container
 ```
 docker run -p 80:80 --name container_name image_name
+```
+
+#### Add Container to Azure Container registry
+```
+az acr build --file Dockerfile --registry dockercontainerregistryjcla --image r .
 ```

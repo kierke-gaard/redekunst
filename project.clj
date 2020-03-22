@@ -12,7 +12,10 @@
                  [day8.re-frame/http-fx "0.1.6"]
                  [pneumatic-tubes "0.3.0"
                   :exclusions [com.cognitect/transit-cljs]]
-                 [cheshire "5.10.0"]]
+                 [cheshire "5.10.0"]
+                 ;; required since java 9 module
+                 [javax.xml.bind/jaxb-api "2.4.0-b180830.0359"]
+                 ]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-npm "0.6.2"]]
